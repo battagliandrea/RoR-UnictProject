@@ -1,5 +1,12 @@
 class LineItemsController < ApplicationController
+
+  #METODO PER TROVARE IL CARRELLO RELATIVO ALLA SESSIONE CORRENTE
+  #INCLUDEREMO PROPRIO IL CURRENT CART PER TROVARE IL CARRELLO NELLA SESSIONE
+  include CurrentCart
+  before_action :set_cart, only: [:create]
   before_action :set_line_item, only: [:show, :edit, :update, :destroy]
+
+
 
   # GET /line_items
   # GET /line_items.json
@@ -24,11 +31,17 @@ class LineItemsController < ApplicationController
   # POST /line_items
   # POST /line_items.json
   def create
-    @line_item = LineItem.new(line_item_params)
+    #OGGETTO PARAM SERVE PER RICAVARE L'ID DELLA RICHIESTA
+    product = Product.find(params[:product_id])
+    #CON CART.LINE_INTEMS.BUILD CREAMO UNA CORRISPONDENZA TRA CARRELLO E LISTA D'ORDINE E PRODOTTO
+    #QUINDI DENTRO LINE_ITEM SALVIAMO LA RIGA D'ORDINE RISULTANTE
+    @line_item = @cart.line_items.build(product: product)
+
 
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to @line_item, notice: 'Line item was successfully created.' }
+        #AGGIUNGIAMO IL .cart AL RISULTATO PERCHÈ BISOGNA CHE CI REINDIRIZZI ALLA PAGINA DEL CARRELLO
+        format.html { redirect_to @line_item.cart, notice: 'Line item was successfully created.' }
         format.json { render :show, status: :created, location: @line_item }
       else
         format.html { render :new }
