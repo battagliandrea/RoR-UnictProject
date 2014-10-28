@@ -1,0 +1,28 @@
+<h1>Listing products</h1>
+
+<table>
+  <% @products.each do |product| %>
+      <!--ALTERNA I COLORI DELLE RIGHE CON IL METODO CYCLE-->
+      <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+        <td>
+          <%= image_tag(product.image_url, class: 'list_image') %>
+        </td>
+        <td class="list_description">
+          <dl>
+            <dt><%= product.title %></dt>
+            <!--VISUALIZZA SOLO I PRIMI 80 CARATTERI DELLA DESCRIZIONE-->
+            <dd><%= truncate(strip_tags(product.description), length: 80) %></dd>
+          </dl>
+        </td>
+        <td class="list_actions">
+          <%= link_to 'Show', product %><br/>
+          <%= link_to 'Edit', edit_product_path(product) %><br/>
+          <!--VISUALIZZA UNA FINESTRA DI DIALOGO PER CONFERMARE LA CANCELLAZIONE DEL PRODOTTO-->
+          <%= link_to 'Destroy', product, method: :delete,
+                      data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+  <% end %>
+</table>
+<br />
+<%= link_to 'New product', new_product_path %>
