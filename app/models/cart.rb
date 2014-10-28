@@ -15,4 +15,9 @@ class Cart < ActiveRecord::Base
     current_item
   end
 
+  #METODO CHE CALCOLA IL PREZZO TOTALE DEGLI ARTICOLI DEL CARRELLO
+  def total_price
+    line_items.to_a.sum { |item| item.total_price }
+  end
+
 end

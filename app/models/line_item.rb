@@ -11,4 +11,9 @@ class LineItem < ActiveRecord::Base
   #INFATTI SE UNA TABELLA HA CHIAVI ESTERNE DEVE CONTENERE IL METODO BELONG_TO CHE FA RIFERIMENTO
   belongs_to :product
   belongs_to :cart
+
+  #METODO CHE MI RESTITUISCE IL PREZZO TOTALE NEL CARRELLO
+  def total_price
+    product.price * quantity
+  end
 end

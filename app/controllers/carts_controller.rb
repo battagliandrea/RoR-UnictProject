@@ -1,6 +1,9 @@
 class CartsController < ApplicationController
   before_action :set_cart, only: [:show, :edit, :update, :destroy]
 
+  #INTERCETTA L'ECCEZIONE SOLLEVATA DA cart.find()
+  rescue_from ActiveRecord::RecordNotFound, with: :invalid_cart
+
   # GET /carts
   # GET /carts.json
   def index
@@ -54,9 +57,12 @@ class CartsController < ApplicationController
   # DELETE /carts/1
   # DELETE /carts/1.json
   def destroy
-    @cart.destroy
+     @cart.destroy if @cart.id == session[:cart_id]
+     session[:cart_id] = nil
     respond_to do |format|
-      format.html { redirect_to carts_url, notice: 'Cart was successfully destroyed.' }
+      #UNA VOLTA ELIMINATO IL CARRELLO VERREMO RIPORTATI ALLA PAGINA DEL CATALOGO
+         format.html { redirect_to store_url,
+           notice: 'Your cart is currently empty' }
       format.json { head :no_content }
     end
   end
@@ -71,4 +77,12 @@ class CartsController < ApplicationController
     def cart_params
       params[:cart]
     end
+
+  #SERVE PER GESTIRE LE RICHIESTE DI ERRORE NEL CASO CHE SI SELEZIONI UNCARRELLO NON VALIDO
+  def invalid_cart
+    #UTILIZIAMO IL LOGGER PER SALVARE UN MESSAGGIO DI ERRORE
+    logger.error "Attempt to access invalid cart #{params[:id]}"
+    #REINDIRIZIAMO L'UTENTE NELLA PAGINA DEL CATALOGO
+    redirect_to store_url, notice: 'Invalid cart'
+  end
 end
