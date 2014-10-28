@@ -1,15 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Depot</title>
-  <%= stylesheet_link_tag    "application", media: "all",
-                             "data-turbolinks-track" => true %>
+  <title>Pragprog Books Online Store</title>
+  <!--GENERA IL LINK AL FOGLIO DI STILE DELL'APPLICAZIONE E SPECIFICA UNA OPZIONE CHE CONSENTE I TURBOLINK-->
+  <%= stylesheet_link_tag   "application", media: "all",
+                                  "data-turbolinks-track" => true %>
+  <!--EVITA ERRORI DI MANOMISSIONE DELLE RICHIESTE TRA I SITI-->
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
-<!-- START_HIGHLIGHT -->
-<body class='<%= controller.controller_name %>'>
-<!-- END_HIGHLIGHT -->
-<%= yield %>
+<body class="<%= controller.controller_name %>">
+<div id="banner">
+  <%= image_tag("logo.png") %>
+  <!--INTESTAZIONE DELLA PAGINA PASSATA TRAMITE VARIABILE-->
+  <%= @page_title || "Pragmatic Bookshelf" %>
+</div>
+<div id="columns">
+  <div id="side">
+    <ul>
+      <li><a href="http://www....">Home</a></li>
+      <li><a href="http://www..../faq">Questions</a></li>
+      <li><a href="http://www..../news">News</a></li>
+      <li><a href="http://www..../contact">Contact</a></li>
+    </ul>
+  </div>
+  <div id="main">
+    <!--CON LA SEGUENTE CHIAMATA SI SOSTITUISCE TUTTO IL CONTENUTO DELLA PAGINA CON UN CONTENUTO SPECIFICO-->
+    <%= yield %>
+  </div>
+</div>
 </body>
 </html>
