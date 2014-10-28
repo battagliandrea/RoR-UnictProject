@@ -1,0 +1,18 @@
+<% if notice %>
+    <p id="notice"><%= notice %></p>
+<% end %>
+
+<h1>Your Pragmatic Catalog</h1>
+
+<% @products.each do |product| %>
+    <div class="entry">
+      <!--image_tag GENERA UN TA HTML <img> usando l'argomento come sorgente dell'immagine-->
+      <%= image_tag(product.image_url) %>
+      <h3><%= product.title %></h3>
+      <!--sanitize CI PERMETTE DI AGGIUNGERE FORMATTAZIONI HTML IN TUTTA SICUREZZA  PER RENDERE DESCRIZIONI INTERESSANTI-->
+      <%= sanitize(product.description) %>
+      <div class="price_line">
+        <span class="price"><%= product.price %></span>
+      </div>
+    </div>
+<% end %>
