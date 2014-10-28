@@ -35,7 +35,7 @@ class LineItemsController < ApplicationController
     product = Product.find(params[:product_id])
     #CON CART.LINE_INTEMS.BUILD CREAMO UNA CORRISPONDENZA TRA CARRELLO E LISTA D'ORDINE E PRODOTTO
     #QUINDI DENTRO LINE_ITEM SALVIAMO LA RIGA D'ORDINE RISULTANTE
-    @line_item = @cart.line_items.build(product: product)
+    @line_item = @cart.add_product(product.id)
 
 
     respond_to do |format|
