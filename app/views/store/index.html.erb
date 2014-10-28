@@ -15,7 +15,8 @@
         <!--METODO CHE PERMETTE DI FORMATTARE IL PREZZO COME VALUTA-->
         <span class="price"><%= number_to_currency(product.price)  %></span>
         <!--AGGIUNTA DI UN PULSANTE PER POTER AGGIUNGERE UN PRODOTTO AL CARRELLO-->
-        <%= button_to 'Add to Cart', line_items_path(product_id: product) %>
+        <!--CON IL PARAMETRO REMOTE INVIEREMO UNA RICHIESTA AJAX-->
+        <%= button_to 'Add to Cart', line_items_path(product_id: product), remote: true %>
       </div>
     </div>
 <% end %>
