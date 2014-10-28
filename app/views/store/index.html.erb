@@ -12,7 +12,8 @@
       <!--sanitize CI PERMETTE DI AGGIUNGERE FORMATTAZIONI HTML IN TUTTA SICUREZZA  PER RENDERE DESCRIZIONI INTERESSANTI-->
       <%= sanitize(product.description) %>
       <div class="price_line">
-        <span class="price"><%= product.price %></span>
+        <!--METODO CHE PERMETTE DI FORMATTARE IL PREZZO COME VALUTA-->
+        <span class="price"><%= number_to_currency(product.price)  %></span>
       </div>
     </div>
 <% end %>
