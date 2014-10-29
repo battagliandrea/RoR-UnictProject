@@ -51,6 +51,8 @@ class OrdersController < ApplicationController
       if @order.save
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
+        #CREAZIONE DI UNA MAIL
+        OrderNotifier.received(@order).deliver
 
         #VISUALIZZIAMO DI NUOVO IL CATALOGO TRAMITE UN MESSAGGIO DI SALUTO
         format.html { redirect_to store_url, notice:
