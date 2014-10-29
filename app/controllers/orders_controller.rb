@@ -16,12 +16,18 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.all
+    if user_signed_in?
+      @id = current_user.id
+      @orders = Order.where(:user_id => @id)
+    end
+
   end
 
   # GET /orders/1
   # GET /orders/1.json
   def show
+    @id=params[:id]
+    @line_items=LineItem.where(:order_id => @id)
   end
 
   # GET /orders/new
@@ -100,7 +106,7 @@ class OrdersController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def order_params
-    params.require(:order).permit(:name, :address, :email, :pay_type)
+    params.require(:order).permit(:name, :address, :email, :pay_type, :user_id)
   end
   #...
 end

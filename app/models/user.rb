@@ -1,4 +1,8 @@
 class User < ActiveRecord::Base
+
+  has_many :orders, dependent: :destroy
+  has_many :line_items, dependent: :destroy
+
   TEMP_EMAIL_PREFIX = 'change@me'
   TEMP_EMAIL_REGEX = /\Achange@me/
 
