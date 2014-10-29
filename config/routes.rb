@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
+  resources :orders
+
   resources :line_items
 
   resources :carts
 
   get 'store/index'
+  #RISPONDE ALLA RICHIESTA DI HTTP GET MA RISPONDE SOLO AD UN MEMBRO DELLA COLLEZIONE E NON A TUTTA LA COLLEZIONE
+  resources :products do
+       get :who_bought, on: :member
+       end
 
   resources :products
 
