@@ -17,8 +17,11 @@
 </div>
 <div id="columns">
   <div id="side">
+    <!--STO IMPOSTANDO LO STILE DEL CSS A none-->
     <div id="cart">
-         <%= render @cart %>
+      <%= hidden_div_if(@cart.line_items.empty?,  id: 'cart') do %>
+          <%= render @cart %>
+      <% end %>
     </div>
 
     <ul>
