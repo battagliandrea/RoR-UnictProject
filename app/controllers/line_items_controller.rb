@@ -41,9 +41,10 @@ class LineItemsController < ApplicationController
     respond_to do |format|
       if @line_item.save
         #AGGIUNGIAMO IL .cart AL RISULTATO PERCHÈ BISOGNA CHE CI REINDIRIZZI ALLA PAGINA DEL CARRELLO
+        #PASSIAMO LA RIGA D'ORDINE AL TEMPLATE ASSEGNANDO LA VARIABILE D'ISTANZA
         format.html { redirect_to store_url }
         #CON QUESTA RIGA QUANDO CREATE TERMINA DI GESTIRE LA RICHIESTA AJAX, RAILS CERCHERÀ UN TEMPLATE CREATE DA RENDERIZZARE
-        format.js
+        format.js   { @current_item = @line_item }
         format.json { render :show, status: :created, location: @line_item }
       else
         format.html { render :new }

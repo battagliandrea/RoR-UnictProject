@@ -1,6 +1,15 @@
 <!--FACCIAMO RIFERIMENTO ALL'OGGETTO USANDO IL NOME DI VARIABILE UGUALE AL QUELLO DEL TEMPLATE-->
-<tr>
-  <td><%= line_item.quantity %>&times;</td>
-  <td><%= line_item.product.title %></td>
-  <td class="item_price"><%= number_to_currency(line_item.total_price) %></td>
+<!-- START_HIGHLIGHT -->
+<!--L'ARTICOLO DA VISUALIZZARE È PROPRIO QUELLO CHE CAMBIA E LO CONTRASSEGNALO
+CON L'ID DELL'ARTICOLO CORRENTE-->
+<% if line_item == @current_item %>
+    <!--IL TAG tr VERRÀ INFATTI CONTRASSEGNATO CON L'ID current_item-->
+    <tr id="current_item">
+<% else %>
+    <tr>
+<% end %>
+<!-- END_HIGHLIGHT -->
+<td><%= line_item.quantity %>&times;</td>
+<td><%= line_item.product.title %></td>
+<td class="item_price"><%= number_to_currency(line_item.total_price) %></td>
 </tr>

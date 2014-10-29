@@ -2,5 +2,10 @@
 //DICE DI SOSTITUIRE id_cart CON QUELL'HTML
 //DENTRO IL METODO RENDER VI STA IL CONTENUTO DA RENDERIZZARE
 //L'OUTPUT DEL METODO VIENE ELABORATO DA escape_javascript
-$('#cart').html("<%= escape_javascript render(@cart) %>");
 //TUTTO QUESTO SCRIPT VIENE ESEGUITO SUL BROWSER TRANNE LE PARTI CHE SONO RACCHIUSE DAL TAG e
+$('#cart').html("<%= escape_javascript render(@cart) %>");
+//#START_HIGHLIGHT
+
+$('#current_item').css({'background-color':'#88ff88'}).
+        animate({'background-color':'#114411'}, 1000);
+//#END_HIGHLIGHT
