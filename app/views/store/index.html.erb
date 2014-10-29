@@ -1,6 +1,9 @@
 <% if notice %>
     <p id="notice"><%= notice %></p>
 <% end %>
+<!--CONTROLLA SE L'UTENTE È LOGGATO-->
+<% if user_signed_in? %>
+    <%= yield %>
 
 <h1>Your Pragmatic Catalog</h1>
 
@@ -20,3 +23,7 @@
       </div>
     </div>
 <% end %>
+<% else %>
+    <!--AVVISO CHE VI È NECESSITÀ DI LOGGARSI-->
+    <%= render :partial=>"shared/noauth"%>
+<%end%>
