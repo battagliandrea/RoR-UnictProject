@@ -93,7 +93,7 @@ class OrdersController < ApplicationController
   def destroy
     @order.destroy
     respond_to do |format|
-      format.html { redirect_to orders_url }
+      format.html { redirect_to admin_orders_path }
       format.json { head :no_content }
     end
   end

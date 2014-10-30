@@ -4,12 +4,33 @@
 CON L'ID DELL'ARTICOLO CORRENTE-->
 <% if line_item == @current_item %>
     <!--IL TAG tr VERRÀ INFATTI CONTRASSEGNATO CON L'ID current_item-->
-    <tr id="current_item">
+    <!--<tr id="current_item">-->
+  <a id="current_item" href="#" class="list-group-item">
+    <div class="row">
+      <div class="col-md-1">
+        <span class="badge"><%= line_item.quantity %></span>
+      </div>
+      <div class="col-md-8">
+        <span><%= truncate(line_item.product.title, :length => 20) %></span>
+      </div>
+      <div class="col-md-2">
+        <span class="badge" align="right"><%= number_to_currency(line_item.total_price) %></span>
+      </div>
+    </div>
+</a>
 <% else %>
-    <tr>
+    <a href="#" class="list-group-item">
+      <div class="row">
+        <div class="col-md-1">
+          <span class="badge"><%= line_item.quantity %></span>
+        </div>
+        <div class="col-md-8">
+          <span><%= truncate(line_item.product.title, :length => 20) %></span>
+        </div>
+        <div class="col-md-2">
+          <span class="badge" align="right"><%= number_to_currency(line_item.total_price) %></span>
+        </div>
+      </div>
+    </a>
 <% end %>
 <!-- END_HIGHLIGHT -->
-<td><%= line_item.quantity %>&times;</td>
-<td><%= line_item.product.title %></td>
-<td class="item_price"><%= number_to_currency(line_item.total_price) %></td>
-</tr>

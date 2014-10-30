@@ -1,0 +1,52 @@
+<% if user_signed_in? %>
+    <% if current_user.admin==1 %>
+        <ol class="breadcrumb">
+          <li><%= link_to "Home", root_path %></li>
+          <li><%= link_to "Amministrazione", admin_index_path %></li>
+          <li class="active">Utenti</li>
+        </ol>
+        <h2 align="center">Gestione Utenti</h2>
+        <div class="row">
+          <div class="col-md-8">
+            <p class="lead">Benvenuto nella pagina di gestione degli utenti
+            </p>
+          </div>
+
+        </div>
+
+
+        <div class="container">
+          <p class="lead">Ordini</p>
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Email</th>
+              <th colspan="2"></th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <% @users.each do |user| %>
+                <tr>
+                  <td><%= user.name %></td>
+                  <td><%= user.email %></td>
+                  <td><%= link_to 'Show', admin_user_show_path(user) , :class => "btn btn-primary btn-xs"%></td>
+                </tr>
+            <% end %>
+            </tbody>
+          </table>
+
+        </div>
+
+    <% else %>
+        <script type="text/javascript">
+            window.location.href = "../errors/404"  // put your correct path in a string here
+        </script>
+    <% end %>
+<% else %>
+    <script type="text/javascript">
+        window.location.href = "../errors/404"  // put your correct path in a string here
+    </script>
+<% end %>
+

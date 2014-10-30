@@ -2,22 +2,73 @@ Rails.application.routes.draw do
 
 
 
+
+  #route con parametro per pannello amministrazione
+  get 'admin/show_product/:id', to: 'admin#show_product' , as: 'admin_product_show'
+  get 'admin/edit_product/:id', to: 'admin#edit_product' , as: 'admin_product_edit'
+
+  get 'admin/new_product', to: 'admin#new_product' , as: 'admin_product_new'
+
+  get 'admin/show_order/:id', to: 'admin#show_order' , as: 'admin_order_show'
+
+  get 'admin/show_user/:id', to: 'admin#show_user' , as: 'admin_user_show'
+
+
+  #errori
+
+  get 'errors/404'
+
+  get 'errors/500'
+
+  get 'errors/403'
+
+  #amministrazione
+
+  get 'admin/index'
+
+  get 'admin/products'
+
+  get 'admin/users'
+
+  get 'admin/orders'
+
+  #pagine iniziali
+
+  get 'home/index'
+
+  get 'home/about'
+
+
+
+  #negozio
+
+  get 'store/index'
+
+  resources :products
+
   resources :orders
 
   resources :line_items
 
   resources :carts
 
-  get 'store/index'
-  #RISPONDE ALLA RICHIESTA DI HTTP GET MA RISPONDE SOLO AD UN MEMBRO DELLA COLLEZIONE E NON A TUTTA LA COLLEZIONE
+
+  root :to => 'home#index'
+
+
+  #devise
+
+  devise_for :users, :controllers => { omniauth_callbacks: 'omniauth_callbacks' }
+
+  match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
+
+
+
+
   resources :products do
-       get :who_bought, on: :member
-       end
+    get :who_bought, on: :member
+  end
 
-  resources :products
-
-  #IMPOSTA QUESTA PAGINE DEL SITO COME ROOT
-  root 'store#index', as: 'store'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -73,7 +124,4 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-
-  devise_for :users, :controllers => { omniauth_callbacks: 'omniauth_callbacks' }
-  match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
 end

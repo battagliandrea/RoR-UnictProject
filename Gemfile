@@ -45,3 +45,7 @@ gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'omniauth-linkedin'
 
+gem 'bootstrap-sass', '~> 3.1.1'
+
+gem 'font-awesome-rails'
+

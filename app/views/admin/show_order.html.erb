@@ -1,0 +1,97 @@
+<% if user_signed_in? %>
+    <% if current_user.admin==1 %>
+        <ol class="breadcrumb">
+          <li><%= link_to "Home", root_path %></li>
+          <li><%= link_to "Amministrazione", admin_index_path %></li>
+          <li><%= link_to "Ordine", admin_orders_path %></li>
+          <li class="active">N°<%= @order.id %></li>
+        </ol>
+        <h2 align="center">Gestione Ordini</h2>
+        <div class="row">
+          <div class="col-md-8">
+            <p class="lead">Dettagli ordine
+            </p>
+          </div>
+
+        </div>
+        <div class="container">
+          <p class="lead">Ordine N°: <%= @order.id %></p>
+
+
+
+          <div class="row">
+            <div class="col-md-8">
+              <div class="container">
+
+                <p class="row">
+                  <strong>Utente:</strong>
+                  <%= @user.name %>
+                </p>
+
+
+                <p class="row">
+                  <strong>Data ordine:</strong>
+                  <%= @order.updated_at %>
+                </p>
+
+
+                <p class="row">
+                  <strong>Nome:</strong>
+                  <%= @order.name %>
+                </p>
+
+                <p class="row">
+                <address>
+                  <strong>Indirizzo:</strong><br>
+                  <%= @order.address %>
+                 </address>
+                </p>
+
+                <p class="row">
+                  <strong>Email:</strong>
+                  <%= @order.email %>
+                </p>
+
+                <p class="row">
+                  <strong>Tipo pagamento:</strong>
+                  <%= @order.pay_type %>
+                </p>
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <ul class="list-group">
+                      <% @line_items.each do |line_item| %>
+                          <li class="list-group-item">
+                            <span class="badge"><%= line_item.quantity %></span>
+                            <%= line_item.product.title %>
+                          </li>
+                      <% end %>
+                    </ul>
+                  </div>
+                  <div class="col-md-6"></div>
+                </div>
+
+
+              </div>
+
+              <%= link_to 'Indietro', admin_orders_path, :class => "btn btn-default btn-xs" %>
+            </div>
+            <div class="col-md-4"></div>
+          </div>
+
+
+
+
+        </div>
+
+    <% else %>
+        <script type="text/javascript">
+            window.location.href = "../errors/404"  // put your correct path in a string here
+        </script>
+    <% end %>
+<% else %>
+    <script type="text/javascript">
+        window.location.href = "../errors/404"  // put your correct path in a string here
+    </script>
+<% end %>
+

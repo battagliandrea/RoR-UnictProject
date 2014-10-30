@@ -1,17 +1,26 @@
 <!--CON LA PRIMA RIGA DI CODICE IL CARRELLO NON VERRÀ VISUALIZZATO NEL CASO SIA VUOTO-->
 <% unless cart.line_items.empty? %>
-<div class="cart_title">Your Cart</div>
+
 <table>
   <!--METODO CHE ITERA SU TUTTE LE COLLEZIONI CHE GLI VENGONO PASSATE-->
-     <%= render(cart.line_items) %>
+  <%= render(cart.line_items) %>
+  <a href="#" class="list-group-item" align="right">Total:
+    <span class="badge" align="right"><%= number_to_currency(cart.total_price)%></span>
+  </a>
 
-  <tr class="total_line">
-    <td colspan="2">Total</td>
-         <td class="total_cell"><%= number_to_currency(cart.total_price)  %></td>
-  </tr>
+</table><br>
 
-</table>
- <%= button_to "Checkout", new_order_path, method: :get %>
- <%= button_to 'Empty cart', cart, method: :delete,
-                data: { confirm: 'Are you sure?' } %>
+    <div class="row">
+      <div class="col-md-8" align="right">
+        <%= button_to 'Empty cart', cart,  class:"btn btn-default", method: :delete,
+                      data: { confirm: 'Are you sure?' } %>
+      </div>
+      <div class="col-md-4" align="left">
+        <%= button_to "Checkout", new_order_path, class:"btn btn-danger", method: :get %>
+
+      </div>
+
+    </div>
+
 <% end %>
+<br>

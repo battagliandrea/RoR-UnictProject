@@ -59,9 +59,9 @@ class CartsController < ApplicationController
   def destroy
      @cart.destroy if @cart.id == session[:cart_id]
      session[:cart_id] = nil
-    respond_to do |format|
+      respond_to do |format|
       #UNA VOLTA ELIMINATO IL CARRELLO VERREMO RIPORTATI ALLA PAGINA DEL CATALOGO
-      format.html { redirect_to store_url}
+      format.html { redirect_to store_index_path}
       format.json { head :no_content }
     end
   end

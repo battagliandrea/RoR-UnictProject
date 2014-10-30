@@ -1,9 +1,9 @@
 class Product < ActiveRecord::Base
 
   #IN QUESTO MODO DICHIARO CHE CI SONO DELLE RELAZIONI
-  has_many :line_items
-  has_many :orders, through: :line_items
-  before_destroy :ensure_not_referenced_by_any_line_item
+  has_many :line_items, :dependent => :destroy
+  has_many :orders, through: :line_items, :dependent => :destroy
+  #before_destroy :ensure_not_referenced_by_any_line_item
 
 
   #OGNI FORM DEVE CONTENERE QUALCOSA PRIMA DI POTER AGGIUNGERE

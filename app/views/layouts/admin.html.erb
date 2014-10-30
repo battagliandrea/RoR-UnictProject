@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%= render :partial =>"shared/header"%>
+</head>
+<body>
+
+<%= render :partial =>"shared/navbar_admin"%>
+
+<div class="container">
+  <% unless notice.nil? %>
+      <p class="alert alert-success"><%= notice %></p>
+  <% end %>
+
+  <% unless alert.nil? %>
+      <p class="alert alert-danger"><%= alert %></p>
+  <% end %>
+
+  <%= yield%>
+</div>
+<hr/>
+<div>
+  <footer class="footer"><p align="center">EuropaStore - Tutto lo sport a portata di click</p>  </footer>
+</div>
+</body>
+</html>

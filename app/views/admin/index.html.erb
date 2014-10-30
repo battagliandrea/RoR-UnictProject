@@ -1,0 +1,55 @@
+<% if user_signed_in? %>
+    <% if current_user.admin==1 %>
+        <ol class="breadcrumb">
+          <li><%= link_to "Home", root_path %></li>
+          <li class="active">Amministrazione</li>
+        </ol>
+        <h2 align="center">Amministrazione</h2>
+        <div class="row">
+          <div class="col-md-8">
+            <p class="lead">Benvenuto nel pannello di Amministrazione di Europasport<br>
+              Qui puoi gestire gli ordini i prodotti e gli utenti
+            </p>
+
+            <div class="container">
+              <p class="lead">
+                Statistiche shop
+              </p>
+
+              <p>
+
+              <ul class="nav nav-pills" role="tablist">
+                <li role="presentation"><a href="#">Ordini <span class="badge"><%= @ordersNum %></span></a></li>
+                <li role="presentation"><a href="#">Prodotti <span class="badge"><%= @prodNum %></span></a></li>
+                <li role="presentation"><a href="#">Utenti <span class="badge"><%= @usersNum %></span></a></li>
+              </ul>
+
+              </p>
+
+            </div>
+
+          </div>
+          <div class="col-md-4">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <ul class="list-group">
+                  <li class="list-group-item btn-default"><%= link_to "Prodotti", admin_products_path %></li>
+                  <li class="list-group-item btn-default"><%= link_to "Utenti", admin_users_path %></li>
+                  <li class="list-group-item btn-default"><%= link_to "Ordini", admin_orders_path %></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+    <% else %>
+        <script type="text/javascript">
+            window.location.href = "../errors/404"  // put your correct path in a string here
+        </script>
+    <% end %>
+<% else %>
+    <script type="text/javascript">
+        window.location.href = "../errors/404"  // put your correct path in a string here
+    </script>
+<% end %>
+
