@@ -7,10 +7,20 @@
 </head>
 <body class="<%= controller.controller_name %>">
 <%= render :partial => "shared/navbar"%>
-    <div class="container">
-    <!--CON LA SEGUENTE CHIAMATA SI SOSTITUISCE TUTTO IL CONTENUTO DELLA PAGINA CON UN CONTENUTO SPECIFICO-->
-    <%= yield %>
+<div class="container">
+  <% unless notice.nil? %>
+      <p class="alert alert-success"><%= notice %></p>
+  <% end %>
+
+  <% unless alert.nil? %>
+      <p class="alert alert-danger"><%= alert %></p>
+  <% end %>
 </div>
+<div class="container">
+  <%= yield%>
+</div>
+
+
 <div>
   <footer class="footer"><p align="center">EuropaStore - lo sport a portata di click</p></footer>
 </div>
