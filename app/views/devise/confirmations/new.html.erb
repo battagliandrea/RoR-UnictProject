@@ -1,12 +1,42 @@
-<h2>Resend confirmation instructions</h2>
+<div class="row">
+  <div class="col-sm-3"></div>
+  <div class="col-sm-6">
+    <div class="jumbotron">
 
-<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
+      <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true %></div>
+          <div class="row">
+            <div class="col-sm-12">
+              <%= f.label :email %>
+              <%= f.email_field :email, autofocus: true,:class => "form-control" %>
+              <br>
+            </div>
+              <style>
+                  #danger{
+                      color: #CC0000 ;
+                  }
+              </style>
 
-  <div><%= f.submit "Resend confirmation instructions" %></div>
-<% end %>
+              <h5 id="danger"><%= devise_error_messages! %></h5>
+              <div class="row">
+                <div class="col-sm-7"></div>
+                <div class="col-sm-5">
+                  <%= f.submit "Reinvia email di conferma", :class => "btn btn-danger btn-sm" %>
 
-<%= render "devise/shared/links" %>
+              </div>
+            </div>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
