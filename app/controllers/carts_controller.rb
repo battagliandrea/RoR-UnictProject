@@ -61,7 +61,7 @@ class CartsController < ApplicationController
      session[:cart_id] = nil
       respond_to do |format|
       #UNA VOLTA ELIMINATO IL CARRELLO VERREMO RIPORTATI ALLA PAGINA DEL CATALOGO
-      format.html { redirect_to store_index_path}
+      format.html { redirect_to store_index_path, notice: 'Cart was successfully Empty.' }
       format.json { head :no_content }
     end
   end
