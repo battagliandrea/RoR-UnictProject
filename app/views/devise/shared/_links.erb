@@ -8,7 +8,7 @@
             <% if provider.to_s.titleize == 'Facebook'%>
                 <%= link_to "<i class='fa fa-facebook'></i>  Sign in with #{provider.to_s.titleize}".html_safe, omniauth_authorize_path(resource_name, provider) , class: "btn btn-default btn-facebook" %><br />
             <%else%>
-                <%= link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider) , class: "btn btn-default" %><br />
+                <%= link_to "Accedi con #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider) , class: "btn btn-default" %><br />
             <% end %>
         <% end -%>
     <% end -%>
