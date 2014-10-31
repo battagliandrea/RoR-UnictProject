@@ -49,7 +49,28 @@
             </div>
         <% end %>
       </div>
+      <!--CARRELLO-->
+      <div class="col-md-4">
 
+        <style>
+            .list-group {
+                position: fixed;
+                width: 27%;
+            }
+        </style>
+
+        <div class="list-group">
+
+            <div id="cart">
+              <%if @cart%>
+                  <%= hidden_div_if(@cart.line_items.empty?,  id: 'cart') do %>
+                      <%= render @cart %>
+                  <% end %>
+              <% end %>
+            </div>
+
+        </div>
+      </div>
     </div>
 
 <% else %>
