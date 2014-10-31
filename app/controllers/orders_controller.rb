@@ -33,7 +33,7 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     if @cart.line_items.empty?
-      redirect_to store_url, notice: "Your cart is empty"
+      redirect_to store_index_path, notice: "Your cart is empty"
       return
     end
 
@@ -61,7 +61,7 @@ class OrdersController < ApplicationController
         OrderNotifier.received(@order).deliver
 
         #VISUALIZZIAMO DI NUOVO IL CATALOGO TRAMITE UN MESSAGGIO DI SALUTO
-        format.html { redirect_to store_url, notice:
+        format.html { redirect_to store_index_path, notice:
             'Thank you for your order.' }
         format.json { render action: 'show', status: :created,
                              location: @order }

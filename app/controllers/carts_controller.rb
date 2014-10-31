@@ -82,6 +82,6 @@ class CartsController < ApplicationController
     #UTILIZIAMO IL LOGGER PER SALVARE UN MESSAGGIO DI ERRORE
     logger.error "Attempt to access invalid cart #{params[:id]}"
     #REINDIRIZIAMO L'UTENTE NELLA PAGINA DEL CATALOGO
-    redirect_to store_url, notice: 'Invalid cart'
+    redirect_to store_index_path, notice: 'Invalid cart'
   end
 end
