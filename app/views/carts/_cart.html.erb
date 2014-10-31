@@ -6,9 +6,8 @@
       <%= render(cart.line_items) %>
       <a href="#" class="list-group-item" align="right">Total:
         <span class="badge" align="right"><%= number_to_currency(cart.total_price)%></span>
-        <br>
-        <br>
-
+      </a>
+      <li class="list-group-item">
         <div class="row">
           <div class="col-md-8" align="right">
             <%= link_to 'Empty cart', cart,  class:"btn btn-default", method: :delete,
@@ -18,7 +17,7 @@
             <%= link_to "Checkout", new_order_path, class:"btn btn-danger", method: :get %>
           </div>
         </div>
-      </a>
+      </li>
     </table>
 <% end %>
 <br>

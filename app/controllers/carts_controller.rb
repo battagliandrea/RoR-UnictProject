@@ -31,7 +31,7 @@ class CartsController < ApplicationController
 
     respond_to do |format|
       if @cart.save
-        format.html { redirect_to @cart, notice: 'Cart was successfully created.' }
+        format.html { redirect_to @cart, notice: 'Carrello creato con successo!' }
         format.json { render :show, status: :created, location: @cart }
       else
         format.html { render :new }
@@ -45,7 +45,7 @@ class CartsController < ApplicationController
   def update
     respond_to do |format|
       if @cart.update(cart_params)
-        format.html { redirect_to @cart, notice: 'Cart was successfully updated.' }
+        format.html { redirect_to @cart, notice: 'Carrello modificato con successo!' }
         format.json { render :show, status: :ok, location: @cart }
       else
         format.html { render :edit }
@@ -61,7 +61,7 @@ class CartsController < ApplicationController
      session[:cart_id] = nil
       respond_to do |format|
       #UNA VOLTA ELIMINATO IL CARRELLO VERREMO RIPORTATI ALLA PAGINA DEL CATALOGO
-      format.html { redirect_to store_index_path, notice: 'Cart was successfully Empty.' }
+      format.html { redirect_to store_index_path, notice: 'Carrello svuotato con succetto!' }
       format.json { head :no_content }
     end
   end

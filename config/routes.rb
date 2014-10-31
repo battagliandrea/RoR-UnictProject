@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-
-
-
   #route con parametro per pannello amministrazione
   get 'admin/show_product/:id', to: 'admin#show_product' , as: 'admin_product_show'
   get 'admin/edit_product/:id', to: 'admin#edit_product' , as: 'admin_product_edit'
@@ -38,8 +35,6 @@ Rails.application.routes.draw do
 
   get 'home/about'
 
-
-
   #negozio
 
   get 'store/index'
@@ -61,9 +56,6 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { omniauth_callbacks: 'omniauth_callbacks' }
 
   match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
-
-
-
 
   resources :products do
     get :who_bought, on: :member
