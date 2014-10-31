@@ -1,79 +1,58 @@
-<% if user_signed_in? %>
-    <% if current_user.admin==1 %>
-        <ol class="breadcrumb">
-          <li><%= link_to "Home", root_path %></li>
-          <li><%= link_to "Amministrazione", admin_index_path %></li>
-          <li><%= link_to "Utenti", admin_users_path %></li>
-          <li class="active"><%= @user.name %></li>
-        </ol>
-        <h2 align="center">Gestione Utenti</h2>
-        <div class="row">
-          <div class="col-md-8">
-            <p class="lead">Dettagli utente
-            </p>
-          </div>
+<ol class="breadcrumb">
+  <li><%= link_to "Home", root_path %></li>
+  <li><%= link_to "Amministrazione", admin_index_path %></li>
+  <li><%= link_to "Utenti", admin_users_path %></li>
+  <li class="active"><%= @user.name %></li>
+</ol>
+<h2 align="center">Gestione Utenti</h2>
+<div class="row">
+  <div class="col-md-8">
+    <p class="lead">Dettagli utente
+    </p>
+  </div>
 
-        </div>
-        <div class="container">
-          <p class="lead">Utenti</p>
+</div>
+<div class="container">
+  <p class="lead">Utenti</p>
 
 
+  <div class="row">
+    <div class="col-md-8">
+      <div class="container">
+        <p class="row">
+          <strong>Nome:</strong>
+          <%= @user.name %>
+        </p>
 
-          <div class="row">
-            <div class="col-md-8">
-              <div class="container">
-                <p class="row">
-                  <strong>Nome:</strong>
-                  <%= @user.name %>
-                </p>
+        <p class="row">
+          <strong>Email:</strong>
+          <%= @user.email %>
+        </p>
 
-                <p class="row">
-                  <strong>Email:</strong>
-                  <%= @user.email %>
-                </p>
-
-                <p class="row">
-                  <strong>Ultimo accesso:</strong>
-                  <%= @user.last_sign_in_at %>
-                </p>
-
+        <p class="row">
+          <strong>Ultimo accesso:</strong>
+          <%= @user.last_sign_in_at %>
+        </p>
 
 
-                <p class="row">
-                  <strong>Ultimo ip accesso:</strong>
-                  <%= @user.last_sign_in_ip %>
-                </p>
+        <p class="row">
+          <strong>Ultimo ip accesso:</strong>
+          <%= @user.last_sign_in_ip %>
+        </p>
 
 
-                <p class="row">
-                  <strong>Numero ordini</strong>
-                  <%= @ordersNum %>
-                </p>
+        <p class="row">
+          <strong>Numero ordini</strong>
+          <%= @ordersNum %>
+        </p>
 
 
+      </div>
+
+      <%= link_to 'Indietro', admin_users_path, :class => "btn btn-default btn-xs" %>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
 
 
-
-
-              </div>
-
-              <%= link_to 'Indietro', admin_users_path, :class => "btn btn-default btn-xs" %>
-            </div>
-            <div class="col-md-4"></div>
-          </div>
-
-
-
-        </div>
-
-    <% else %>
-        <script type="text/javascript">
-            window.location.href = "../errors/404"  // put your correct path in a string here
-        </script>
-    <% end %>
-<% else %>
-    <script type="text/javascript">
-        window.location.href = "../errors/404"  // put your correct path in a string here
-    </script>
-<% end %>
-
+</div>

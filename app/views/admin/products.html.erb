@@ -1,56 +1,44 @@
-<% if user_signed_in? %>
-    <% if current_user.admin==1 %>
-        <ol class="breadcrumb">
-          <li><%= link_to "Home", root_path %></li>
-          <li><%= link_to "Amministrazione", admin_index_path %></li>
-          <li class="active">Prodotti</li>
-        </ol>
-        <h2 align="center">Gestione Prodotti</h2>
-        <div class="row">
-          <div class="col-md-8">
-            <p class="lead">Benvenuto nella pagina di gestione dei prodotti
-            </p>
-          </div>
+<ol class="breadcrumb">
+  <li><%= link_to "Home", root_path %></li>
+  <li><%= link_to "Amministrazione", admin_index_path %></li>
+  <li class="active">Prodotti</li>
+</ol>
+<h2 align="center">Gestione Prodotti</h2>
+<div class="row">
+  <div class="col-md-8">
+    <p class="lead">Benvenuto nella pagina di gestione dei prodotti
+    </p>
+  </div>
 
-        </div>
+</div>
 
 
-        <div class="container">
-          <p class="lead">Prodotti</p>
-          <table class="table table-striped">
-            <thead>
-            <tr>
-              <th>Titolo</th>
-              <th>Descrizione</th>
-              <th colspan="2"></th>
-            </tr>
-            </thead>
-            <tbody>
-            <% @products.each do |product| %>
-                <tr>
-                  <td><%= product.title %></td>
-                  <td><%= truncate(strip_tags(product.description), length: 80) %></td>
-                  <td><%= link_to 'Show', admin_product_show_path(product) ,:class => "btn btn-primary btn-xs" %></td>
-                  <td><%= link_to 'Edit', admin_product_edit_path(product),:class => "btn btn-success btn-xs" %></td>
-                  <td><%= link_to 'Destroy', product, method: :delete, data: {confirm: 'Are you sure?'},:class => "btn btn-danger btn-xs" %></td>
-                </tr>
-            <% end %>
-            </tbody>
-          </table>
-
-
-          <%= link_to 'New product', admin_product_new_path,:class => "btn btn-default btn-xs"  %>
-
-        </div>
-
-    <% else %>
-        <script type="text/javascript">
-            window.location.href = "../errors/404"  // put your correct path in a string here
-        </script>
+<div class="container">
+  <p class="lead">Prodotti</p>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Titolo</th>
+      <th>Descrizione</th>
+      <th colspan="2"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @products.each do |product| %>
+        <tr>
+          <td><%= product.title %></td>
+          <td><%= truncate(strip_tags(product.description), length: 80) %></td>
+          <td><%= link_to 'Show', admin_product_show_path(product), :class => "btn btn-primary btn-xs" %></td>
+          <td><%= link_to 'Edit', admin_product_edit_path(product), :class => "btn btn-success btn-xs" %></td>
+          <td><%= link_to 'Destroy', product, method: :delete, data: {confirm: 'Are you sure?'}, :class => "btn btn-danger btn-xs" %></td>
+        </tr>
     <% end %>
-<% else %>
-    <script type="text/javascript">
-        window.location.href = "../errors/404"  // put your correct path in a string here
-    </script>
-<% end %>
+    </tbody>
+  </table>
+
+
+  <%= link_to 'New product', admin_product_new_path, :class => "btn btn-default btn-xs" %>
+
+</div>
+
 

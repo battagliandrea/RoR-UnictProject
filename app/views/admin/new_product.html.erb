@@ -1,106 +1,93 @@
-<% if user_signed_in? %>
-    <% if current_user.admin==1 %>
-        <ol class="breadcrumb">
-          <li><%= link_to "Home", root_path %></li>
-          <li><%= link_to "Amministrazione", admin_index_path %></li>
-          <li><%= link_to "Prodotti", admin_products_path %></li>
-          <li class="active">Inserimento nuovo prodotto</li>
-        </ol>
-        <h2 align="center">Gestione Prodotti</h2>
-        <div class="row">
-          <div class="col-md-8">
-            <p class="lead">Nuovo Prodotto
-            </p>
-          </div>
+<ol class="breadcrumb">
+  <li><%= link_to "Home", root_path %></li>
+  <li><%= link_to "Amministrazione", admin_index_path %></li>
+  <li><%= link_to "Prodotti", admin_products_path %></li>
+  <li class="active">Inserimento nuovo prodotto</li>
+</ol>
+<h2 align="center">Gestione Prodotti</h2>
+<div class="row">
+  <div class="col-md-8">
+    <p class="lead">Nuovo Prodotto
+    </p>
+  </div>
 
-        </div>
-        <div class="container">
-          <p class="lead">Prodotto</p>
+</div>
+<div class="container">
+  <p class="lead">Prodotto</p>
 
 
-          <div class="row">
-            <div class="col-md-8"><p>
-              <%= form_for(@product) do |f| %>
-                  <% if @product.errors.any? %>
-                      <div id="error_explanation">
-                        <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being
-                          saved:</h2>
+  <div class="row">
+    <div class="col-md-8"><p>
+      <%= form_for(@product) do |f| %>
+          <% if @product.errors.any? %>
+              <div id="error_explanation">
+                <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being
+                  saved:</h2>
 
-                        <ul>
-                          <% @product.errors.full_messages.each do |message| %>
-                              <li><%= message %></li>
-                          <% end %>
-                        </ul>
-                      </div>
+                <ul>
+                  <% @product.errors.full_messages.each do |message| %>
+                      <li><%= message %></li>
                   <% end %>
-                  <div class="row">
-                    <div class="col-md-4">
-                      <div class="input-group">
-                        <%= f.label :title %>
-                        <br>
-                        <%= f.text_field :title, :class => 'form-control' %>
-                      </div>
-                    </div>
+                </ul>
+              </div>
+          <% end %>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="input-group">
+                <%= f.label :title %>
+                <br>
+                <%= f.text_field :title, :class => 'form-control' %>
+              </div>
+            </div>
 
-                    <div class="col-md-4">
-                      <div class="input-group">
-                        <%= f.label :price %>
+            <div class="col-md-4">
+              <div class="input-group">
+                <%= f.label :price %>
 
-                        <%= f.text_field :price, :class => 'form-control' %>
-                      </div>
-
-
-                    </div>
-                    <div class="col-md-4">
-                      <div class="input-group">
-                        <%= f.label :image_url %>
-                        <br>
-                        <%= f.text_field :image_url, :class => 'form-control' %>
-                      </div>
-                    </div>
-
-                  </div>
-
-                  <div class="field">
-                    <%= f.label :description %>
-                    <br>
-                    <%= f.text_area :description, :class => 'form-control', :rows => 4 %>
-                  </div>
-
-
-
-                  <div class="actions">
-                    <br>
-                    <%= f.submit 'Salva', :class => 'btn btn-primary btn-xm' %>
-                  </div>
-              <% end %>
-
-
-
-              <br>
-
-              <div class="container">
-                <%= link_to 'Back', admin_products_path, :class => "btn btn-default btn-xs" %>
+                <%= f.text_field :price, :class => 'form-control' %>
               </div>
 
 
-            </div><div class="col-md-4"></div>
+            </div>
+            <div class="col-md-4">
+              <div class="input-group">
+                <%= f.label :image_url %>
+                <br>
+                <%= f.text_field :image_url, :class => 'form-control' %>
+              </div>
+            </div>
 
           </div>
 
+          <div class="field">
+            <%= f.label :description %>
+            <br>
+            <%= f.text_area :description, :class => 'form-control', :rows => 4 %>
+          </div>
 
-        </div>
 
-    <% else %>
-        <script type="text/javascript">
-            window.location.href = "../errors/404"  // put your correct path in a string here
-        </script>
-    <% end %>
-<% else %>
-    <script type="text/javascript">
-        window.location.href = "../errors/404"  // put your correct path in a string here
-    </script>
-<% end %>
+          <div class="actions">
+            <br>
+            <%= f.submit 'Salva', :class => 'btn btn-primary btn-xm' %>
+          </div>
+      <% end %>
+
+
+
+      <br>
+
+      <div class="container">
+        <%= link_to 'Back', admin_products_path, :class => "btn btn-default btn-xs" %>
+      </div>
+
+
+    </div>
+    <div class="col-md-4"></div>
+
+  </div>
+
+
+</div>
 
 
 

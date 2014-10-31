@@ -1,58 +1,44 @@
-<% if user_signed_in? %>
-    <% if current_user.admin==1 %>
-        <ol class="breadcrumb">
-          <li><%= link_to "Home", root_path %></li>
-          <li><%= link_to "Amministrazione", admin_index_path %></li>
-          <li class="active">Ordini</li>
-        </ol>
-        <h2 align="center">Gestione Ordini</h2>
-        <div class="row">
-          <div class="col-md-8">
-            <p class="lead">Benvenuto nella pagina di gestione degli ordini
-            </p>
-          </div>
+<ol class="breadcrumb">
+  <li><%= link_to "Home", root_path %></li>
+  <li><%= link_to "Amministrazione", admin_index_path %></li>
+  <li class="active">Ordini</li>
+</ol>
+<h2 align="center">Gestione Ordini</h2>
+<div class="row">
+  <div class="col-md-8">
+    <p class="lead">Benvenuto nella pagina di gestione degli ordini
+    </p>
+  </div>
 
-        </div>
+</div>
 
 
-        <div class="container">
-          <p class="lead">Ordini</p>
-          <table class="table table-striped">
-            <thead>
-            <tr>
-              <th>Nome</th>
-              <th>Indirizzo</th>
-              <th>Email</th>
-              <th>Tipo Pagamento</th>
-              <th colspan="2"></th>
-            </tr>
-            </thead>
+<div class="container">
+  <p class="lead">Ordini</p>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Indirizzo</th>
+      <th>Email</th>
+      <th>Tipo Pagamento</th>
+      <th colspan="2"></th>
+    </tr>
+    </thead>
 
-            <tbody>
-            <% @orders.each do |order| %>
-                <tr>
-                  <td><%= order.name %></td>
-                  <td><%= order.address %></td>
-                  <td><%= order.email %></td>
-                  <td><%= order.pay_type %></td>
-                  <td><%= link_to 'Show' ,  admin_order_show_path(order), :class => "btn btn-primary btn-xs"  %></td>
-                  <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } ,:class => "btn btn-danger btn-xs" %></td>
+    <tbody>
+    <% @orders.each do |order| %>
+        <tr>
+          <td><%= order.name %></td>
+          <td><%= order.address %></td>
+          <td><%= order.email %></td>
+          <td><%= order.pay_type %></td>
+          <td><%= link_to 'Show', admin_order_show_path(order), :class => "btn btn-primary btn-xs" %></td>
+          <td><%= link_to 'Destroy', order, method: :delete, data: {confirm: 'Are you sure?'}, :class => "btn btn-danger btn-xs" %></td>
 
-                </tr>
-            <% end %>
-            </tbody>
-          </table>
-
-        </div>
-
-    <% else %>
-        <script type="text/javascript">
-            window.location.href = "../errors/404"  // put your correct path in a string here
-        </script>
+        </tr>
     <% end %>
-<% else %>
-    <script type="text/javascript">
-        window.location.href = "../errors/404"  // put your correct path in a string here
-    </script>
-<% end %>
+    </tbody>
+  </table>
 
+</div>

@@ -1,5 +1,8 @@
 class AdminController < ApplicationController
 
+  before_action :is_admin
+
+
   def index
     @products = Product.all
     @users= User.all
@@ -58,6 +61,25 @@ class AdminController < ApplicationController
     @user= User.find(params[:id])
     @ordersNum = Order.where(:user_id => params[:id]).size
 
+
+  end
+
+
+  def is_admin
+    if user_signed_in?
+      if current_user.admin==1
+        @user=current_user
+      else
+        no_auth
+      end
+    else
+      no_auth
+    end
+
+  end
+
+  def no_auth
+    raise ActionController::RoutingError.new('Not Found')
 
   end
 

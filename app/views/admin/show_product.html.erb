@@ -1,64 +1,47 @@
-<% if user_signed_in? %>
-    <% if current_user.admin==1 %>
-        <ol class="breadcrumb">
-          <li><%= link_to "Home", root_path %></li>
-          <li><%= link_to "Amministrazione", admin_index_path %></li>
-          <li><%= link_to "Prodotti", admin_products_path %></li>
-          <li class="active"><%= @product.title %></li>
-        </ol>
-        <h2 align="center">Gestione Prodotti</h2>
-        <div class="row">
-          <div class="col-md-8">
-            <p class="lead">Dettagli prodotto
-            </p>
-          </div>
+<ol class="breadcrumb">
+  <li><%= link_to "Home", root_path %></li>
+  <li><%= link_to "Amministrazione", admin_index_path %></li>
+  <li><%= link_to "Prodotti", admin_products_path %></li>
+  <li class="active"><%= @product.title %></li>
+</ol>
+<h2 align="center">Gestione Prodotti</h2>
+<div class="row">
+  <div class="col-md-8">
+    <p class="lead">Dettagli prodotto
+    </p>
+  </div>
 
-        </div>
-        <div class="container">
-          <p class="lead">Prodotto</p>
+</div>
+<div class="container">
+  <p class="lead">Prodotto</p>
 
 
+  <div class="row">
+    <div class="col-md-8"><p>
+      <strong>Title:</strong>
+      <%= @product.title %>
+    </p>
 
-          <div class="row">
-            <div class="col-md-8"><p>
-              <strong>Title:</strong>
-              <%= @product.title %>
-            </p>
+      <p>
+        <strong>Description:</strong>
+        <%= @product.description %>
+      </p>
 
-              <p>
-                <strong>Description:</strong>
-                <%= @product.description %>
-              </p>
+      <p>
+        <strong>Image url:</strong>
+        <%= @product.image_url %>
+      </p>
 
-              <p>
-                <strong>Image url:</strong>
-                <%= @product.image_url %>
-              </p>
+      <p>
+        <strong>Price:</strong>
+        <%= @product.price %>
+      </p>
 
-              <p>
-                <strong>Price:</strong>
-                <%= @product.price %>
-              </p>
-
-              <%= link_to 'Edit', admin_product_edit_path(@product)  , :class => "btn btn-success btn-xs" %>
-              <%= link_to 'Back', admin_products_path, :class => "btn btn-default btn-xs" %>
-            </div>
-            <div class="col-md-4"></div>
-          </div>
-
+      <%= link_to 'Edit', admin_product_edit_path(@product), :class => "btn btn-success btn-xs" %>
+      <%= link_to 'Back', admin_products_path, :class => "btn btn-default btn-xs" %>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
 
 
-
-        </div>
-
-    <% else %>
-        <script type="text/javascript">
-            window.location.href = "../errors/404"  // put your correct path in a string here
-        </script>
-    <% end %>
-<% else %>
-    <script type="text/javascript">
-        window.location.href = "../errors/404"  // put your correct path in a string here
-    </script>
-<% end %>
-
+</div>
