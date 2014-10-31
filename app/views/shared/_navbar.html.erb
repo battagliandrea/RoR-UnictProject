@@ -24,7 +24,7 @@
               </a>
               <ul class="dropdown-menu">
                 <li><%= link_to "Profilo", edit_user_registration_path %></li>
-                <li><%= link_to "Ordini", '#' %></li>
+                <li><%= link_to "Ordini", orders_path %></li>
                 <li class="divider"></li>
                 <li>
                   <%= link_to "Logout", destroy_user_session_path, :method => :delete %>
@@ -36,7 +36,6 @@
                 <% end %>
               </ul>
             </li>
-
         <% else %>
             <li><%= link_to "Sign in", new_user_session_path %></li>
         <% end %>

@@ -38,10 +38,8 @@
         </p>
 
         <p class="row">
-        <address>
-          <strong>Indirizzo:</strong><br>
+          <strong>Indirizzo:</strong>
           <%= @order.address %>
-        </address>
         </p>
 
         <p class="row">
@@ -59,6 +57,7 @@
             <ul class="list-group">
               <% @line_items.each do |line_item| %>
                   <li class="list-group-item">
+
                     <span class="badge"><%= line_item.quantity %></span>
                     <%= line_item.product.title %>
                   </li>
