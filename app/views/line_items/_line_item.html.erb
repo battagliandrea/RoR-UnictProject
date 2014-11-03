@@ -28,7 +28,7 @@ CON L'ID DELL'ARTICOLO CORRENTE-->
           <span><%= truncate(line_item.product.title, :length => 20) %></span>
         </div>
         <div class="col-md-2">
-          <span class="badge" align="right"><%= number_to_currency(line_item.total_price) %></span>
+          <span class="badge" align="right"><%= number_to_currency(line_item.total_price, :unit => "€") %></span>
         </div>
       </div>
     </a>

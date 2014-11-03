@@ -5,7 +5,7 @@
       <!--METODO CHE ITERA SU TUTTE LE COLLEZIONI CHE GLI VENGONO PASSATE-->
       <%= render(cart.line_items) %>
       <a href="#" class="list-group-item" align="right">Total:
-        <span class="badge" align="right"><%= number_to_currency(cart.total_price)%></span>
+        <span class="badge" align="right"><%= number_to_currency(cart.total_price, :unit => "€")%></span>
       </a>
       <li class="list-group-item">
         <div class="row">

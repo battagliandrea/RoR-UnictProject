@@ -34,7 +34,7 @@
 
       <p>
         <strong>Price:</strong>
-        <%= @product.price %>
+        <%= number_to_currency(@product.price, :unit => "€") %>
       </p>
 
       <%= link_to 'Edit', admin_product_edit_path(@product), :class => "btn btn-success btn-xs" %>

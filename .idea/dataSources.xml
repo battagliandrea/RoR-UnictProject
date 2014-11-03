@@ -6,7 +6,7 @@
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://127.0.0.1/Europa-Sport_development</jdbc-url>
       <user-name>root</user-name>
-      <user-password>dfd8dfc5dfc5dfde</user-password>
+      <user-password>dfc8dfdedfdedf93df9ddf9bdf9ddf99df9edf9fdf99dfc4dfcedfd8</user-password>
       <libraries />
     </data-source>
     <data-source source="LOCAL" name="Rails Europa-sport: test" uuid="1c429a21-3f9c-48ad-94dd-eef19e69be41">
@@ -14,7 +14,7 @@
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://127.0.0.1/Europa-Sport_test</jdbc-url>
       <user-name>root</user-name>
-      <user-password>dfd8dfc5dfc5dfde</user-password>
+      <user-password>dfc8dfdedfdedf93df9ddf9bdf9ddf99df9edf9fdf99dfc4dfcedfd8</user-password>
       <libraries />
     </data-source>
     <data-source source="LOCAL" name="Rails Europa-sport: production" uuid="0a057bac-c307-4a10-a8af-573b5d3811e3">
