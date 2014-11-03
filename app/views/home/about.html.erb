@@ -1,2 +1,58 @@
-<h1>Home#about</h1>
-<p>Find me in app/views/home/about.html.erb</p>
+<head>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+
+  <script type="text/javascript"
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3XbsqLCXXF_pXDdcdAnO6RTiCONZ3p68">
+  </script>
+  <script type="text/javascript">
+      var geocoder;
+      var map,map2;
+      function initialize() {
+          geocoder = new google.maps.Geocoder();
+          var myLatlng = new google.maps.LatLng(37.51693,15.105613);
+          var mapOptions = {
+              center: myLatlng,
+              zoom: 18
+          };
+          map = new google.maps.Map(document.getElementById("map-canvas"),
+                  mapOptions);
+          var marker = new google.maps.Marker({
+              position: myLatlng,
+              map: map,
+              title:"Museo Informatico"
+          })};
+      function codeAddress() {
+          var address = document.getElementById("address").value;
+          geocoder.geocode( { 'address': address}, function(results, status) {
+              if (status == google.maps.GeocoderStatus.OK) {
+                  map.setCenter(results[0].geometry.location);
+                  var marker = new google.maps.Marker({
+                      map: map,
+                      position: results[0].geometry.location
+                  });
+              } else {
+                  alert("Geocode was not successful for the following reason: " + status);
+              }
+          })};
+  </script>
+</head>
+<body onload="initialize()">
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        if(document.URL.indexOf("#")==-1)
+        {
+            url=document.URL+"#";
+            location="#";
+            location.reload(true);
+        }
+    });
+</script>
+
+<div id="map-canvas" style="width: auto; height: 400px;"></div>
+<div>
+  <br>
+  <input id="address" type="textbox" value="Dove sei!">
+  <input type="button" value="Trova" onclick="codeAddress()">
+</div>
+</body>
