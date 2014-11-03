@@ -94,7 +94,7 @@ Product.create!(title: 'Maglia rugby adulto Full 300 blu',
           deato per giocare a rugby, in allenamento e nel tempo libero. Maglia ideale per giocare a rugby occasionalmente!
  Resistente e leggera, per un comfort ottimale!
       },
-                image_url: 'rete_beach.jpg',
+                image_url: 'maglia_rugby.jpg',
                 price: 13.95)
 
 
@@ -107,7 +107,7 @@ Product.create!(title: 'Casco rugby FULL H 500 nero',
 In particolare, viene indossato dai nostri partner internazionali Bernard Le Roux e Juandré Kruger.
       },
                 image_url: 'casco_rugby.jpg',
-                price: 37.45)
+                price: 20.45)
 
 Product.create!(title: 'Pallone basket GG7',
                 description:
