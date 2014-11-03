@@ -118,8 +118,6 @@ Product.create!(title: 'Pallone basket GG7',
                 image_url: 'ball_basket.jpg',
                 price: 80.00)
 
-s
-
 Product.create!(title: 'Canotta Heat replica Lebron James',
                 description:
                     %{
