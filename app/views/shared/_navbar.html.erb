@@ -22,10 +22,10 @@
             <li id="fat-menu" class="dropdown">
 
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <% if current_user.name %>
+                <% if current_user.name? %>
                     <%= current_user.name %> <b class="caret"></b>
                 <% else %>
-                    <%= "Utente" %> <b class="caret"></b>
+                    <%= current_user.email %> <b class="caret"></b>
                 <% end %>
               </a>
               <ul class="dropdown-menu">
