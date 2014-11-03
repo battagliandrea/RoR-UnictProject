@@ -49,10 +49,37 @@
     });
 </script>
 
+<div class="page-header" align="center-right">
+  <h1><small>Contatti</small></h1>
+  <div class="row">
+    <div class="col-md-6" align="center">
+      <%= image_tag "avatar_andrea.jpg", :class => 'img-circle img-responsive', :style => 'width: 75px; height: 75px; '%>
+      <a href="http://andreabattaglia.altervista.org">Andrea Battaglia</a>
+      </div>
+    <div class="col-md-6" align="center">
+      <%= image_tag "avatar_gabriele.jpg", :class => 'img-circle img-responsive', :style => 'width: 75px; height: 75px; '%>
+      <a href="http://gabrielebaldoni.altervista.org">Gabriele Baldoni</a>
+    </div>
+    </div>
+</div>
+
+<div class="page-header" align="center-right">
+  <h1><small>Come Trovarci?</small></h1>
+</div>
+
 <div id="map-canvas" style="width: auto; height: 400px;"></div>
 <div>
-  <br>
-  <input id="address" type="textbox" value="Dove sei!">
-  <input type="button" value="Trova" onclick="codeAddress()">
+  <div class="row">
+    <div class="col-md-4">
+      <br>
+      <input id="address" type="textbox" value="La tua posizione" class = "form-control">
+      </div>
+    <div class="col-md-4">
+      <br>
+      <input type="button" value="Trova" onclick="codeAddress()" class = "btn btn-primary btn-xm">
+      <br>
+    </div>
+    </div>
+
 </div>
 </body>
