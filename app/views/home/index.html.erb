@@ -1,14 +1,48 @@
 <ol class="breadcrumb">
   <li><a href="#">Home</a></li>
 </ol>
+<div class="page-header">
+
+  <h1>Benvenuto su EuropaSport<br><small>Il tuo negozio per lo sport</small></h1>
+</div>
 <div class="row">
   <div class="col-md-8">
     <br>
-    <img src="http://www.soccerfollowers.net/skin/frontend/default/soccer/images/slider/slider6.jpg" class="img-rounded img-responsive">
+   <%= image_tag "home_big.jpg" , :class => "img-rounded img-responsive" %>
   </div>
   <div class="col-md-4">
-    <img src="http://images2.gazzettaobjects.it/methode_image/2014/10/27/Varie/Foto%20Varie%20-%20Trattate/4dc985a7d3687b6fe42105fb0fa7e9c0_169_l.JPG?v=20141028112443" class="img-rounded img-responsive">
-    <br>
-    <img src="http://images2.gazzettaobjects.it/methode_image/2014/10/26/Varie/Foto%20Varie%20-%20Trattate/616a75c8-5d44-11e4-a905-1daca036ea12_169_l.jpg?v=20141027135843" class="img-rounded img-responsive">
+    <%= image_tag "home_side1.jpg", :class => "img-rounded img-responsive"%>
+     <br>
+    <%= image_tag "home_side2.jpg", :class => "img-rounded img-responsive"%>
+     </div>
+
+  <div class="row">
+    <div class="col-md-8">
+      <div class="container-fluid">
+        <p class="lead"><b><h3>EuropaSport</h3></b></p>
+        <p>
+          Da EuropaSport vogliamo “creare voglia” e rendere accessibile al maggior numero di persone il piacere e i benefici dello sport.
+          È questa, sintetizzata in una frase, la missione di EuropaSport.<br>
+          Vitalità, sincerità, generosità e responsabilità sono i valori legati alla passione per lo sport e alla crescita professionale delle persone.<br>
+
+          Prodotti belli e tecnologici, ottimo rapporto qualità - prezzo, rispetto dell’ambiente e acquisto rapido in libero servizio.
+          <br>
+          Accedendo al nostro store potrai avere accesso a tutto ciò comodamente da casa tua.
+          Che aspetti <%= link_to "registrati", new_user_session_path %> ed inizia la tua attività sportiva!!
+        </p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <br><br>
+      <div class="container-fluid">
+        <%= image_tag "home_side3.jpg", :class => "img-rounded img-responsive"%>
+        <br>
+        <%= image_tag "home_side4.jpg", :class => "img-rounded img-responsive"%>
+
+      </div>
+
+    </div>
   </div>
+
+
 </div>
